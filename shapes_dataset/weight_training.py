@@ -14,6 +14,7 @@ from model import create_model
 from constants import (
     SHAPE_NAMES,
     ADDITIONAL_SHAPE_NAMES,
+    INPUT_SHAPE,
     MAX_DRAWINGS,
     TEST_SIZE,
     RANDOM_STATE,
@@ -34,7 +35,7 @@ def load_dataset(shape_names):
         for drawing in qdraw_group.drawings:
             pil_img = drawing.get_image()
             img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGBA2GRAY)
-            img_resized = cv2.resize(img, (50, 50))
+            img_resized = cv2.resize(img, INPUT_SHAPE[:2])
             images.append(img_resized)
             labels.append(shape_idx)
 

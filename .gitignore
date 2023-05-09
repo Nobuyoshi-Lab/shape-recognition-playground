@@ -12,7 +12,7 @@ structure_diagram.txt
 *_debug.png
 
 # Models
-shape_recognition_model.h5
+# shape_recognition_model.h5
 
 # C extensions
 *.so

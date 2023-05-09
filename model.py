@@ -1,6 +1,6 @@
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-from constants import INPUT_SHAPE, SHAPE_NAMES, ADDITIONAL_SHAPE_NAMES
+from constants import (INPUT_SHAPE, SHAPE_NAMES, ADDITIONAL_SHAPE_NAMES)
 
 def create_model(input_shape=INPUT_SHAPE, num_classes=len(SHAPE_NAMES + ADDITIONAL_SHAPE_NAMES)):
     model = Sequential([

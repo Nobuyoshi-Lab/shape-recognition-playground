@@ -3,7 +3,7 @@ from flask_cors import CORS
 import cv2
 import numpy as np
 import base64
-from constants import SHAPE_NAMES, ADDITIONAL_SHAPE_NAMES
+from constants import (SHAPE_NAMES, ADDITIONAL_SHAPE_NAMES, INPUT_SHAPE)
 from model import create_model
 from keras.models import load_model
 
@@ -39,7 +39,7 @@ def recognize_shape():
     cv2.imwrite("preprocessed_image_debug.png", preprocessed_image)  # Save preprocessed image
 
     # Resizing the input image with cv2.INTER_AREA interpolation method
-    gray_resized = cv2.resize(preprocessed_image, (50, 50), interpolation=cv2.INTER_AREA)
+    gray_resized = cv2.resize(preprocessed_image, INPUT_SHAPE[:2], interpolation=cv2.INTER_AREA)
 
     cv2.imwrite("gray_resized_debug.png", gray_resized)  # Save resized grayscale image
 
