@@ -1,6 +1,6 @@
 # Shape Recognition Playground
 
-This project is a web application for recognizing hand-drawn shapes using a deep learning model. The supported shapes are "Bing Chilling" and "Illuminati Confirmed". The application is built using Flask, and the model is trained using Keras.
+This project is a web application for recognizing hand-drawn shapes using a deep learning model. The application is built using Flask, and the model is trained using Keras.
 
 ## Credits
 
