@@ -8,9 +8,13 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.utils import to_categorical
 from keras.callbacks import EarlyStopping
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+app_dir = os.path.abspath(
+    os.path.join(
+        os.path.dirname(
+            os.path.abspath(__file__)),
+        "../app"))
+sys.path.append(app_dir)
 
-from model import create_model
 from constants import (
     SHAPE_NAMES,
     ADDITIONAL_SHAPE_NAMES,
@@ -20,6 +24,7 @@ from constants import (
     RANDOM_STATE,
     TRAINING_EPOCHS,
     BATCH_SIZE)
+from model import create_model
 
 
 def load_dataset(shape_names):
@@ -62,7 +67,10 @@ def main():
 
     model = create_model()
 
-    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(
+        optimizer='adam',
+        loss='categorical_crossentropy',
+        metrics=['accuracy'])
 
     datagen = ImageDataGenerator(
         rotation_range=20,
@@ -88,13 +96,13 @@ def main():
             y_test),
         callbacks=[early_stopping])
 
-    parent_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    model_path = os.path.join(parent_dir, 'shape_recognition_model.h5')
+    model_path = os.path.join(app_dir, 'shape_recognition_model.h5')
     model.save(model_path)
 
     # Print training history
     print("Training accuracy:", history.history['accuracy'])
     print("Validation accuracy:", history.history['val_accuracy'])
+
 
 if __name__ == "__main__":
     main()

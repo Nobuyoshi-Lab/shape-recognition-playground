@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape Recognition</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <audio id="bingChilling" src="{{ url_for('static', filename='sounds/bing_chilling.mp3') }}" preload="auto"></audio>
+  <audio id="illuminatiConfirmed" src="{{ url_for('static', filename='sounds/illuminati_confirmed.mp3') }}" preload="auto"></audio>
+  <canvas id="drawingCanvas" width="500" height="500"></canvas>
+  <br>
+  <button id="recognizeShape">Recognize Shape</button>
+  <button id="clearCanvas">Clear Canvas</button>
+  <div id="confidenceResult"></div>
+  <div id="shapeResult"></div>
+  <div id="shape-labels">
+    <h3>Recognizable shapes:</h3>
+    <ul>
+        {% for shape in shape_names %}
+        <li>{{ shape }}</li>
+        {% endfor %}
+    </ul>
+  </div>
+  <script>
+    const canvas = document.getElementById('drawingCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let drawing = false;
+
+    canvas.addEventListener('mousedown', (e) => {
+      drawing = true;
+      ctx.beginPath();
+      ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+      if (!drawing) return;
+      ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+      ctx.stroke();
+    });
+
+    canvas.addEventListener('mouseup', () => {
+      drawing = false;
+    });
+
+    function playAudio(audioId) {
+      const audio = document.getElementById(audioId);
+      audio.currentTime = 0;
+      audio.play();
+    }
+
+    function stopSound() {
+      const audios = ['bingChilling', 'illuminatiConfirmed'];
+      audios.forEach(audioId => {
+        const audio = document.getElementById(audioId);
+        audio.pause();
+      });
+    }
+
+    document.getElementById('recognizeShape').addEventListener('click', () => {
+      const imageData = canvas
+      .toDataURL('image/png')
+      .replace(/^data:image\/png;base64,/, '');
+
+      $.ajax({
+        url: '/recognize_shape',
+        method: 'POST',
+        data: { image: imageData },
+        success: function (response) {
+          $('#shapeResult').text('Shape: ' + response.shape);
+          $('#confidenceResult').text('Confidence: ' + (response.confidence * 100).toFixed(2) + '%');
+
+          stopSound();
+          
+          if (response.shape === "Bing Chilling") {
+            playAudio("bingChilling");
+          } else if (response.shape === "Illuminati Confirmed") {
+            playAudio("illuminatiConfirmed");
+          }
+        },
+        error: function (error) {
+          console.error(error);
+          alert('An error occurred while recognizing the shape.');
+        },
+      });
+    });
+
+    document.getElementById('clearCanvas').addEventListener('click', () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stopSound();
+    });
+  </script>
+</body>
+</html>

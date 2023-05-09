@@ -4,8 +4,12 @@ import random
 from quickdraw import QuickDrawData
 import re
 
-parent_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-sys.path.append(parent_dir)
+app_dir = os.path.abspath(
+    os.path.join(
+        os.path.dirname(
+            os.path.abspath(__file__)),
+        "../app"))
+sys.path.append(app_dir)
 
 from constants import SHAPE_NAMES, ADDITIONAL_SHAPE_AMOUNT
 
@@ -22,7 +26,7 @@ def main():
     sample_size = min(ADDITIONAL_SHAPE_AMOUNT, len(all_shape_names))
     additional_shape_names = random.sample(all_shape_names, sample_size)
 
-    constants_path = os.path.join(parent_dir, 'constants.py')
+    constants_path = os.path.join(app_dir, 'constants.py')
 
     with open(constants_path, 'r') as f:
         content = f.read()
