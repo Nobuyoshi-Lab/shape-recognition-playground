@@ -39,7 +39,7 @@ pip install -r shapes_dataset/requirements.txt
 python shapes_dataset/weight_training.py
 ```
 
-3. (Optional) Run the `generate_constants.py` script in the `shapes_dataset` folder to generate the random labels for the dataset and save them to the `constants.py` file.
+3. **(Optional)** Run the `generate_constants.py` script in the `shapes_dataset` folder to generate the random labels for the dataset and save them to the `constants.py` file.
 
 ```
 python shapes_dataset/generate_constants.py
