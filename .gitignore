@@ -8,6 +8,9 @@ list_files.py
 output.txt
 structure_diagram.txt
 
+# Results for debugging
+*_debug.png
+
 # Models
 shape_recognition_model.h5
 
