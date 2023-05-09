@@ -11,6 +11,7 @@ This project uses the following resources:
 - [Keras](https://keras.io/)
 - [OpenCV](https://opencv.org/)
 - [Quick, Draw! Dataset](https://quickdraw.readthedocs.io/)
+- [jQuery](https://code.jquery.com/)
 
 ## Prerequisites
 
