@@ -15,6 +15,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-COPY shape_recognition_weights.h5 .
+COPY shape_recognition_model.h5 .
 
 CMD ["python", "app.py"]
