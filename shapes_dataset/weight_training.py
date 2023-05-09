@@ -56,17 +56,20 @@ def main():
     shape_names = SHAPE_NAMES + ADDITIONAL_SHAPE_NAMES
     images, labels = load_dataset(shape_names)
     images, labels = preprocess_data(images, labels)
-    X_train, X_test, y_train, y_test = train_test_split(
+    x_train, x_test, y_train, y_test = train_test_split(
         images, labels, test_size=TEST_SIZE, random_state=RANDOM_STATE)
 
     model = create_model()
+
+    # Compile the model
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     datagen = ImageDataGenerator(
         rotation_range=20,
         width_shift_range=0.1,
         height_shift_range=0.1,
         zoom_range=0.1)
-    datagen.fit(X_train)
+    datagen.fit(x_train)
 
     early_stopping = EarlyStopping(
         monitor='val_loss',
@@ -76,19 +79,18 @@ def main():
     training_epochs = TRAINING_EPOCHS
     model.fit(
         datagen.flow(
-            X_train,
+            x_train,
             y_train,
             batch_size=BATCH_SIZE),
         epochs=training_epochs,
         validation_data=(
-            X_test,
+            x_test,
             y_test),
         callbacks=[early_stopping])
 
     parent_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     model_path = os.path.join(parent_dir, 'shape_recognition_model.h5')
     model.save(model_path)
-
 
 if __name__ == "__main__":
     main()
