@@ -8,6 +8,9 @@ list_files.py
 output.txt
 structure_diagram.txt
 
+# Models
+shape_recognition_model.h5
+
 # C extensions
 *.so
 
