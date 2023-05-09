@@ -57,6 +57,8 @@ Setup:
 pip install -r requirements.txt
 ```
 
+To start application:
+
 ```
 python app/app.py
 ```
@@ -82,13 +84,13 @@ sudo apt-get update -y
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
-Windows:
+**Windows**:
 
 ```
 docker-compose up --build
 ```
 
-Linux:
+**Linux**:
 
 ```
 sudo docker compose up --build
