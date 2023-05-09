@@ -2,6 +2,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
+cache/
+get_contents.py
+list_files.py
+output.txt
+structure_diagram.txt
 
 # C extensions
 *.so
