@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shape Recognition</title>
-  <style>
-    canvas {
-      border: 1px solid black;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -16,7 +14,7 @@
   <br>
   <button id="recognizeShape">Recognize Shape</button>
   <button id="clearCanvas">Clear Canvas</button>
-  <div id="confidenceResult"></div> <!-- New confidence div -->
+  <div id="confidenceResult"></div>
   <div id="shapeResult"></div>
   <div id="shape-labels">
     <h3>Recognizable shapes:</h3>

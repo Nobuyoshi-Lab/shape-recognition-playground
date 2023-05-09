@@ -61,7 +61,6 @@ def main():
 
     model = create_model()
 
-    # Compile the model
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     datagen = ImageDataGenerator(
@@ -77,7 +76,7 @@ def main():
         restore_best_weights=True)
 
     training_epochs = TRAINING_EPOCHS
-    model.fit(
+    history = model.fit(
         datagen.flow(
             x_train,
             y_train,
@@ -91,6 +90,10 @@ def main():
     parent_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     model_path = os.path.join(parent_dir, 'shape_recognition_model.h5')
     model.save(model_path)
+
+    # Print training history
+    print("Training accuracy:", history.history['accuracy'])
+    print("Validation accuracy:", history.history['val_accuracy'])
 
 if __name__ == "__main__":
     main()
