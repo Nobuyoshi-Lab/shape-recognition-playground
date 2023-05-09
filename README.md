@@ -12,6 +12,15 @@ This project uses the following resources:
 - [OpenCV](https://opencv.org/)
 - [Quick, Draw! Dataset](https://quickdraw.readthedocs.io/)
 
+## Prerequisites
+
+1. Clone the repository.
+
+```
+git clone https://github.com/Nobuyoshi-Lab/shape-recognition-playground.git
+cd shape_recognition_playground
+```
+
 ## Train the Model
 
 There is already a trained model in the `shapes_dataset` folder. If you want to train the model yourself, you can do so by following the steps below.
@@ -37,15 +46,6 @@ python shapes_dataset/generate_constants.py
 ```
 
 You can also change the `ADDITIONAL_SHAPE_AMOUNT` in the `constants.py` script in the `app` folder to change the number of additional shapes to generate.
-
-## Installation
-
-1. Clone the repository.
-
-```
-git clone https://github.com/Nobuyoshi-Lab/shape-recognition-playground.git
-cd shape_recognition_playground
-```
 
 ## Run the application.
 
