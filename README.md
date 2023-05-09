@@ -6,11 +6,11 @@ This project is a web application for recognizing hand-drawn shapes using a deep
 
 This project uses the following resources:
 
-- Flask (https://flask.palletsprojects.com/)
-- Tensorflow (https://www.tensorflow.org/)
-- Keras (https://keras.io/)
-- OpenCV (https://opencv.org/)
-- Quick, Draw! dataset (https://quickdraw.readthedocs.io/)
+- [Flask](https://flask.palletsprojects.com/)
+- [Tensorflow](https://www.tensorflow.org/)
+- [Keras](https://keras.io/)
+- [OpenCV](https://opencv.org/)
+- [Quick, Draw! Dataset](https://quickdraw.readthedocs.io/)
 
 ## Train the Model
 
