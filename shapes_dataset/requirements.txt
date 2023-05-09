@@ -1,0 +1,4 @@
+scikit-learn
+quickdraw
+opencv-python-headless
+tensorflow
