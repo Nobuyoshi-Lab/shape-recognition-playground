@@ -67,7 +67,7 @@ python app/app.py
 
 Docker installation:
 
-```shell
+```
 sudo apt-get update -y
 sudo apt-get install ca-certificates curl gnupg -y
 
@@ -83,6 +83,7 @@ echo \
 sudo apt-get update -y
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
 
 **Windows**:
 
